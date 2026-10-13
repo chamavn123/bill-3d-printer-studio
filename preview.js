@@ -14,8 +14,8 @@ export function buildPreview(s, code) {
  steps.sort((a,b)=>a.pos-b.pos||a.serial-b.serial);
  steps.push({title:'Ready to print',detail:'Bambu Studio adds your sliced model after this start routine.',kind:'ready'});
  }else{
- add('Factory finish','Finish extrusion, turn heaters off and follow the printer’s factory ending and parking sequence.','park');
- if(s.printer!=='P1S')add(s.endSound?'Finish melody':'Finish melody off',s.endSound?'The factory melody plays before custom cooling and push actions.':'Completion melody commands are removed.','sound');
+ add('Factory finish','Follow the original retract, wipe, filament unload, heater shutdown and parking sequence. Factory wiping can include repeated movements. The illustration does not reproduce these paths.','park');
+ if(s.printer!=='P1S')add(s.endSound?'Finish melody':'Finish melody off',s.endSound?'The factory melody plays before optional timed cooling.':'Completion melody commands are removed.','sound');
  if(s.park!=='factory')add(s.park==='over'?'Hover above the model':'Adjust height beside the model',(s.heightDirection==='above'?'Add ':'Subtract ')+s.heightOffset+' mm '+(s.heightDirection==='above'?'above ':'below ')+(s.heightRef==='highest'?'the highest layer.':'the first-layer height.')+' Out-of-range moves are skipped by slicer conditions.','hover');
  if(s.coolMode!=='off'){
  add('Cool the print','Part fan '+s.fan+'%'+(s.printer==='P1S'?' · side fan '+s.auxFan+'% · exhaust '+s.chamberFan+'%':'')+'. '+(s.coolMode==='time'?'Run for '+s.minutes+' minutes.':'Experimental bed target '+s.bedTarget+' °C; duration unknown, may reheat and has no timeout.'),'cool');

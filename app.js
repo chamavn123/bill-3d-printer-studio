@@ -1,5 +1,5 @@
-import {createPreview} from './preview.js';
-import {generate,defaults,heightExpression,ejectionHeight} from './generator.js';
+import {createPreview} from './preview.js?v=20261013-restore';
+import {generate,defaults,heightExpression,ejectionHeight} from './generator.js?v=20261013-restore';
 const $=id=>document.getElementById(id);
 let data,mode='start',comments=true,output='',timer;const settings=Object.fromEntries(['A1','A1 mini','P1S'].map(m=>[m,defaults(m)]));
 const numberCard=(id,title,description,unit,max,min=0)=>'<div class="card field-card"><div class="card-title"><div><label for="'+id+'"><h3>'+title+'</h3></label><p>'+description+'</p></div><div class="value"><input id="'+id+'" type="number" step="any" min="'+min+'" max="'+max+'" aria-label="'+title+'"><span>'+unit+'</span></div></div></div>';
